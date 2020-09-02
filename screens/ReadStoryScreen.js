@@ -12,7 +12,7 @@ export class ReadStoryScreen extends Component {
                 text: 'Read Story',
                 style: { color: '#fff', fontSize: 20 }}}
                 />
-                <Text> textInComponent </Text>
+                <Text> Read story  </Text>
             </View>
         )
     }
