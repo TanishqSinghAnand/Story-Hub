@@ -1,9 +1,8 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity , ScrollView } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity , ScrollView , KeyboardAvoidingView , ToastAndroid , Image } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
-import {Header} from 'react-native-elements';
 import db from '../config'
-//import firebase from 'firebase'
+import firebase from 'firebase'
 
 export default class WriteStoryScreen extends React.Component {
     constructor(props){
@@ -28,18 +27,17 @@ export default class WriteStoryScreen extends React.Component {
             author: '',
             story: ''
         })
+        var tsa = "Story Submitted"
+        ToastAndroid.show(tsa,ToastAndroid.SHORT)
     }
 
     render(){
         return(
             <ScrollView>
-                <View style={styles.container}>
-                    <Header
-                        backgroundColor={'purple'}
-                        centerComponent={{
-                        text: 'Write Story',
-                        style: { color: '#fff', fontSize: 20 }}}
-                        />
+                <KeyboardAvoidingView style={styles.container}>
+                    <Image
+                    source={require("../assets/StoryHub.png")}
+                    style={{width:200, height: 200}}/>
                     <TextInput 
                         placeholder="Story Title"
                         onChangeText= {(text)=>{
@@ -75,7 +73,7 @@ export default class WriteStoryScreen extends React.Component {
                         <Text style={styles.buttonText}>Submit</Text>
                     </TouchableOpacity>
                     </View>
-                </View>
+                </KeyboardAvoidingView>
             </ScrollView>
         );
     }
@@ -85,62 +83,40 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   title:{
-    width: '60vw',
+    width: '70%',
     height:50,
-    border:'solid',
-    borderStartWidth : 2,
-    borderEndWidth : 3,
-    borderTopWidth : 1,
-    boderLeftWidth: 2,
-    borderRightWidth: 3,
-    borderBottomWidth : 4,
     alignSelf:"center",
-    marginTop:20
-  },
+    marginTop:20,
+    borderWidth: 3,  
+    },
   author: {
-    width: '60vw',
+    width: '70%',
     height:50,
-    border:'solid',
-    borderStartWidth : 2,
-    borderEndWidth : 3,
-    borderTopWidth : 1,
-    boderLeftWidth: 2,
-    borderRightWidth: 3,
-    borderBottomWidth : 4,
     alignSelf:"center",
-    marginTop:20
+    marginTop:20 ,
+    borderWidth: 3, 
   },
   story: {
-    width: '60vw',
+    width: '70%',
     height:400,
-    border:'solid',
-    borderStartWidth : 2,
-    borderEndWidth : 3,
-    borderTopWidth : 1,
-    boderLeftWidth: 2,
-    borderRightWidth: 3,
-    borderBottomWidth : 4,
     alignSelf:"center",
-    marginTop:20
+    marginTop:20,
+    borderWidth: 3,
   },
   submitButton:{
-    width: '20%',
-    height: 35,
-    border:'solid',
-    borderStartWidth : 2,
-    borderEndWidth : 3,
-    borderTopWidth : 1,
-    boderLeftWidth: 2,
-    borderRightWidth: 3,
-    borderBottomWidth : 4,
+    width: 130,
+    height: 45,
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor:"black",
     borderRadius:999,
     marginTop:35,
     marginBottom: 33,
+    margin : 30
   },
   buttonText: {
       textAlign: 'center',
