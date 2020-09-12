@@ -15,12 +15,11 @@ export default class WriteStoryScreen extends React.Component {
     }
 
     submitStory = ()=>{
-        db.collection(this.state.title).add({
+        db.collection('stories').add({
             'title': this.state.title,
             'author': this.state.author,
             'date': firebase.firestore.Timestamp.now().toDate(),
             'story': this.state.story,
-            //date: firebase.firestore.FieldValue.serverTimestamp().now().toDate()
         })
         this.setState({
             title: '',
@@ -28,7 +27,7 @@ export default class WriteStoryScreen extends React.Component {
             story: ''
         })
         var tsa = "Story Submitted"
-        ToastAndroid.show(tsa,ToastAndroid.SHORT)
+      //  ToastAndroid.show(tsa,ToastAndroid.SHORT)
     }
 
     render(){
@@ -129,7 +128,3 @@ const styles = StyleSheet.create({
     justifyContent:'center',
   },
 });
-
-
-
-

@@ -14,8 +14,8 @@ export default class App extends React.Component {
 }
 
 const TabNavigator = createBottomTabNavigator({
-  WriteStory: WriteStoryScreen,
-  ReadStory: ReadStoryScreen
+  ReadStory: ReadStoryScreen,
+  WriteStory: WriteStoryScreen
 },
 {
   defaultNavigationOptions: ({navigation})=>({
